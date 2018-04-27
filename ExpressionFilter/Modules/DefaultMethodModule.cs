@@ -1,6 +1,6 @@
 namespace ExpressionFilter.Modules
 {
-    public class DefaultMethodModule : MethodModule
+    internal class DefaultMethodModule : MethodModule
     {
         protected override void Load()
         {

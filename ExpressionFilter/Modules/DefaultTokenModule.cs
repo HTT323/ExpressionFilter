@@ -1,6 +1,6 @@
 namespace ExpressionFilter.Modules
 {
-    public class DefaultTokenModule : TokenModule
+    internal class DefaultTokenModule : TokenModule
     {
         protected override void Load()
         {
