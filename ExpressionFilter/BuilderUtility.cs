@@ -71,6 +71,15 @@ namespace ExpressionFilter
 
                     break;
 
+                case DataType.Double:
+
+                    ce = Expression.Constant(
+                        exp.Expression.Right != null
+                            ? Convert.ToDouble(exp.Expression.Right)
+                            : tokens[exp.Expression.Token].Value<double>(), typeof(double));
+
+                    break;
+
                 case DataType.Boolean:
 
                     ce = Expression.Constant(
@@ -205,6 +214,9 @@ namespace ExpressionFilter
                 case DataType.Decimal:
                     return Nullable.GetUnderlyingType(property.Type) != null ? typeof(decimal?) : typeof(decimal);
 
+                case DataType.Double:
+                    return Nullable.GetUnderlyingType(property.Type) != null ? typeof(double?) : typeof(double);
+
                 case DataType.Boolean:
                     return Nullable.GetUnderlyingType(property.Type) != null ? typeof(bool?) : typeof(bool);
 
@@ -244,6 +256,10 @@ namespace ExpressionFilter
 
                 case DataType.Decimal:
                     dataType = typeof(decimal);
+                    break;
+
+                case DataType.Double:
+                    dataType = typeof(double);
                     break;
 
                 case DataType.Boolean:

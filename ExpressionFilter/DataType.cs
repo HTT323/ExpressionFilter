@@ -6,6 +6,7 @@
         Integer,
         String,
         Decimal,
+        Double,
         Boolean,
         DateTime,
         Guid,
