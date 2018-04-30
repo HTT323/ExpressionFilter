@@ -7,7 +7,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using ExpressionFilter.Contracts;
-using ExpressionFilter.Modules;
 using Newtonsoft.Json;
 
 #endregion
