@@ -22,13 +22,20 @@ namespace ExpressionFilter
 
         public Expression<Func<T, bool>> Build<T>(Filter filter)
         {
-            return Build<T>(filter, new DefaultTokenModule(), new DefaultMethodModule());
+            return Build<T>(filter, null, null);
         }
 
         public Expression<Func<T, bool>> Build<T>(Filter filter, ITokenModule tokenModule, IMethodModule methodModule)
         {
-            _tokens = tokenModule.GetTokens();
-            _methods = methodModule.GetMethods();
+            _tokens =
+                tokenModule == null
+                    ? new Dictionary<string, IToken>()
+                    : tokenModule.GetTokens();
+
+            _methods =
+                methodModule == null
+                    ? new Dictionary<string, IMethod>()
+                    : methodModule.GetMethods();
 
             var pe = Expression.Parameter(typeof(T), "f");
             var be = BoolExpression(filter, null, pe);
